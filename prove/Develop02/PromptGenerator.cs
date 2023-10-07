@@ -4,10 +4,16 @@ public class PromptGenerator
     public string _promptFilePath;
     public string GetRandomPrompt()
     {
-
-        Random random = new Random();
-        int randomNumber = random.Next(0, _prompts.Count());
-        return _prompts[randomNumber];
+        if (!_prompts.Any())
+        {
+            Random random = new Random();
+            int randomNumber = random.Next(0, _prompts.Count());
+            return _prompts[randomNumber];
+        }
+        else
+        {
+            return "No prompt was available";
+        }
     }
 
     public void LoadPromptsFromFile()
